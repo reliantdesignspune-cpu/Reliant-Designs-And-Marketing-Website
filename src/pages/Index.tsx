@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Menu, X, Phone, Mail, MapPin, ChevronRight, Rocket, Target, Zap, Users, Briefcase, BookOpen, MessageCircle, Star } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
-import logo from '../assets/logo.png';
+import logo from '../Assets/logo.png';
 import { blogs } from "../data/blogs";
 import { portfolio } from "../data/portfolio";
 import PopupForm from "@/components/PopupForm";
