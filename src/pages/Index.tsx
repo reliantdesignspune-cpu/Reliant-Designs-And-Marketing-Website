@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Menu, X, Phone, Mail, MapPin, ChevronRight, Rocket, Target, Zap, Users, Briefcase, BookOpen, MessageCircle, Star } from "lucide-react";
+import { Menu, X, Phone, Mail, MapPin, ChevronRight, Rocket, Target, Zap, Users, Briefcase, BookOpen, MessageCircle, Star, Smartphone, Megaphone } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
 import logo from '../Assets/logo.png';
@@ -14,6 +14,8 @@ import { blogs } from "../data/blogs";
 import { portfolio } from "../data/portfolio";
 import PopupForm from "@/components/PopupForm";
 import ApplicationForm from "@/components/ApplicationForm";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 
 const carouselImages = [
@@ -32,6 +34,20 @@ const services = [
     gradient: "from-primary to-blue-500"
   },
   {
+    id: "website-landing",
+    title: "Website & Landing Pages",
+    description: "High-converting websites that drive business growth",
+    icon: Target,
+    gradient: "from-accent to-yellow-500"
+  },
+  {
+    id: "app-development",
+    title: "App Development",
+    description: "Custom mobile applications for iOS and Android",
+    icon: Smartphone,
+    gradient: "from-primary to-green-500"
+  },
+  {
     id: "seo",
     title: "SEO Optimization",
     description: "Rank higher on search engines and attract organic traffic",
@@ -46,13 +62,6 @@ const services = [
     gradient: "from-primary to-cyan-500"
   },
   {
-    id: "led-sign-boards",
-    title: "LED Sign Boards",
-    description: "Eye-catching illuminated signage for your business",
-    icon: Zap,
-    gradient: "from-accent to-red-500"
-  },
-  {
     id: "branding",
     title: "Branding & Graphic Design",
     description: "Create memorable brand identities that stand out",
@@ -60,11 +69,18 @@ const services = [
     gradient: "from-primary to-purple-500"
   },
   {
-    id: "website-landing",
-    title: "Website & Landing Pages",
-    description: "High-converting websites that drive business growth",
-    icon: Target,
-    gradient: "from-accent to-yellow-500"
+    id: "outdoor-advertising",
+    title: "Outdoor Advertising & Promotion Activities",
+    description: "Impactful outdoor campaigns that reach your local audience",
+    icon: Megaphone,
+    gradient: "from-accent to-red-600"
+  },
+  {
+    id: "led-sign-boards",
+    title: "LED Sign Boards",
+    description: "Eye-catching illuminated signage for your business",
+    icon: Zap,
+    gradient: "from-accent to-red-500"
   },
   {
     id: "print-media",
@@ -154,6 +170,54 @@ const testimonials = [
     review: "Excellent service. Very cooperative team. Reasonable rates compared to market. Good quality",
     image: "https://ui-avatars.com/api/?name=Tushar+Raut&background=EC4899&color=fff&size=150",
     timeAgo: "22 Nov 2024"
+  },
+  {
+    name: "Kartik Chalak",
+    business: "2 reviews • 0 photos",
+    rating: 5,
+    review: "Very nice place for vinyl printing and offset printing like letterhead, pamplate printing, sticker printing and all types of offset printing. I specially thanks to reliant design and marketing for help me to growing my business.",
+    image: "https://ui-avatars.com/api/?name=Kartik+Chalak&background=10B981&color=fff&size=150",
+    timeAgo: "14 weeks ago"
+  },
+  {
+    name: "Vishal Dhale",
+    business: "5 reviews • 11 photos",
+    rating: 5,
+    review: "Very good work from reliant designs and marketing for led board and furniture shop board, He is very professional and helping behavior. i personally recommended for reliant designs and marketing for led boards and acrylic boards and flex printing work as well as all digital marketing and social media marketing.",
+    image: "https://ui-avatars.com/api/?name=Vishal+Dhale&background=F59E0B&color=fff&size=150",
+    timeAgo: "14 weeks ago"
+  },
+  {
+    name: "Vaibhav Raje Bhosale",
+    business: "6 reviews • 0 photos",
+    rating: 5,
+    review: "Good service for acrylic led board and society/office name board. Good in Google business profile creation and social media marketing",
+    image: "https://ui-avatars.com/api/?name=Vaibhav+Raje+Bhosale&background=EC4899&color=fff&size=150",
+    timeAgo: "14 weeks ago"
+  },
+  {
+    name: "Rajesh Waghmare",
+    business: "5 reviews • 0 photos",
+    rating: 5,
+    review: "Very good work he is solve my issue regarding my Google business profile. Thank to reliant designs and marketing for helping me to reopen my business profile. He is very good in Google business profile creating and for search engine ranking. And he also provide works related to flex printing and LED board making and visiting cards making.",
+    image: "https://ui-avatars.com/api/?name=Rajesh+Waghmare&background=6366F1&color=fff&size=150",
+    timeAgo: "14 weeks ago"
+  },
+  {
+    name: "Ashish Singh",
+    business: "4 reviews • 1 photo",
+    rating: 5,
+    review: "Very supportive behavior and good quality work of my backlit board. Thank for helping.",
+    image: "https://ui-avatars.com/api/?name=Ashish+Singh&background=8B5CF6&color=fff&size=150",
+    timeAgo: "16 weeks ago"
+  },
+  {
+    name: "piyush Kajale",
+    business: "1 review • 15 photos",
+    rating: 5,
+    review: "Good for dr file printing and offset printing. Making Good Quality LED boards",
+    image: "https://ui-avatars.com/api/?name=Piyush+Kajale&background=7C2D12&color=fff&size=150",
+    timeAgo: "19 weeks ago"
   }
 ];
 
@@ -484,17 +548,27 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Valued Clients</h2>
           </div>
 
-          <div className="relative overflow-hidden">
-            <div className="flex gap-8 animate-[slide-left_30s_linear_infinite]">
-              {[...clients, ...clients].map((client, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 px-8 py-4 bg-card rounded-lg border border-border"
-                >
-                  <p className="text-lg font-semibold whitespace-nowrap">{client}</p>
-                </div>
-              ))}
-            </div>
+          <div className="relative overflow-hidden px-4">
+            <Carousel
+              plugins={[
+                Autoplay({
+                  delay: 2000,
+                }),
+              ]}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-1">
+                {clients.map((client, index) => (
+                  <CarouselItem key={index} className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                    <div className="p-1">
+                      <div className="flex items-center justify-center p-6 bg-card rounded-lg border border-border h-full">
+                        <span className="text-lg font-semibold text-center">{client}</span>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section >
@@ -510,40 +584,50 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="relative overflow-hidden">
-            <div className="flex gap-6 animate-[slide-left_40s_linear_infinite] hover:pause">
-              {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <Card
-                  key={index}
-                  className="flex-shrink-0 w-[400px] hover:shadow-xl transition-all duration-300"
-                >
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
-                      <div className="flex-1">
-                        <CardTitle className="text-lg">{testimonial.name}</CardTitle>
-                        <CardDescription className="text-sm">{testimonial.business}</CardDescription>
-                        <div className="flex items-center gap-2 mt-2">
-                          <div className="flex gap-1">
-                            {[...Array(testimonial.rating)].map((_, i) => (
-                              <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                            ))}
+          <div className="relative overflow-hidden px-4">
+            <Carousel
+              plugins={[
+                Autoplay({
+                  delay: 3000,
+                }),
+              ]}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-1">
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1 h-full">
+                      <Card className="h-full hover:shadow-xl transition-all duration-300">
+                        <CardHeader>
+                          <div className="flex items-start gap-4">
+                            <img
+                              src={testimonial.image}
+                              alt={testimonial.name}
+                              className="w-16 h-16 rounded-full object-cover"
+                            />
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{testimonial.name}</CardTitle>
+                              <CardDescription className="text-sm">{testimonial.business}</CardDescription>
+                              <div className="flex items-center gap-2 mt-2">
+                                <div className="flex gap-1">
+                                  {[...Array(testimonial.rating)].map((_, i) => (
+                                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                                  ))}
+                                </div>
+                                <span className="text-xs text-muted-foreground">{testimonial.timeAgo}</span>
+                              </div>
+                            </div>
                           </div>
-                          <span className="text-xs text-muted-foreground">{testimonial.timeAgo}</span>
-                        </div>
-                      </div>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-muted-foreground italic line-clamp-4">"{testimonial.review}"</p>
+                        </CardContent>
+                      </Card>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground italic">"{testimonial.review}"</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
 
           {/* Google Reviews Badge */}

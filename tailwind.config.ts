@@ -99,6 +99,10 @@ export default {
           "10%": { opacity: "1" },
           "90%": { opacity: "1" },
           "100%": { opacity: "0" }
+        },
+        "slide-left": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" }
         }
       },
       animation: {
@@ -111,7 +115,8 @@ export default {
         "scale-in": "scale-in 0.4s ease-out",
         "float": "float 3s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite",
-        "carousel-fade": "carousel-fade 4s ease-in-out"
+        "carousel-fade": "carousel-fade 4s ease-in-out",
+        "slide-left": "slide-left 30s linear infinite"
       },
     },
   },

@@ -38,6 +38,38 @@ const serviceDetails = {
     ],
     gradient: "from-accent to-orange-500"
   },
+  "app-development": {
+    title: "App Development",
+    description: "Custom mobile applications for iOS and Android that provide seamless user experiences and drive business efficiency.",
+    badge: "Mobile Innovation",
+    benefits: [
+      "Native iOS and Android app development",
+      "Cross-platform development (React Native/Flutter)",
+      "UI/UX design for mobile interfaces",
+      "App store optimization (ASO)",
+      "Maintenance and support",
+      "API integration and backend development",
+      "Enterprise mobility solutions",
+      "Mobile app analytics"
+    ],
+    gradient: "from-primary to-green-500"
+  },
+  "outdoor-advertising": {
+    title: "Outdoor Advertising & Promotion Activities",
+    description: "High-impact outdoor advertising campaigns and promotional activities to increase brand visibility in your local area.",
+    badge: "Outdoor Impact",
+    benefits: [
+      "Billboard and hoarding advertising",
+      "Transit and vehicle advertising",
+      "Street furniture and kiosk ads",
+      "Event promotion and experiential marketing",
+      "Flyer and brochure distribution",
+      "Local area marketing campaigns",
+      "Strategic location planning",
+      "Campaign performance monitoring"
+    ],
+    gradient: "from-accent to-red-600"
+  },
   "performance-ads": {
     title: "Performance Ads",
     description: "ROI-focused advertising campaigns across Google, Facebook, Instagram, and more platforms to maximize your advertising investment.",
