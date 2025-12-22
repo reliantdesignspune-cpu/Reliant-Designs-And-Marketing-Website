@@ -250,6 +250,8 @@ const jobs = [
   }
 ];
 
+import { Helmet } from "react-helmet-async";
+
 const Index = () => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -314,6 +316,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Digital Marketing & Advertising Agency in Balewadi Pune | Reliant Designs & Marketing</title>
+        <meta
+          name="description"
+          content="Reliant Designs & Marketing is a leading digital marketing and advertising agency in Pune offering SEO, performance ads, LED signage, branding, website development, and print media solutions."
+        />
+      </Helmet>
       {/* Navbar */}
       <nav className="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200">
         <div className="container mx-auto px-4 py-4">
