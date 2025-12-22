@@ -399,6 +399,8 @@ const Index = () => {
                 <Badge variant="secondary" className="text-sm">Creative Agency</Badge>
                 <Badge variant="secondary" className="text-sm">Digital Marketing</Badge>
                 <Badge variant="secondary" className="text-sm">Design Excellence</Badge>
+                <Badge variant="secondary" className="text-sm">Website Development</Badge>
+                <Badge variant="secondary" className="text-sm">Advertising</Badge>
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
