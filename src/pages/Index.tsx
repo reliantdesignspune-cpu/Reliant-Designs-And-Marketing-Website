@@ -391,7 +391,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="py-20 md:py-32">
+      <section id="hero" className="pt-8 pb-20 md:pt-16 md:pb-32">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in-left">
